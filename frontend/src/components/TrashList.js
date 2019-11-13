@@ -5,45 +5,33 @@ import axios from 'axios';
 const Task = props => (
     <tr>
         <td>
-            <div className="btn btn-primary" onClick={() => 
-                axios.post('http://localhost:4000/tasks/update/'+ props.task._id, 
-                {
-                    task_description: props.task.task_description,
-                    due_date: props.task.due_date,
-                    task_completed: false,
-                    date_completed: props.task.date_completed,
-                    task_deleted: props.task.task_deleted
-                })
-
-            .then(res => console.log(res.data))
-                }>Uncheck</div>
-        </td>
+            <div className="btn btn-primary">Check</div>
+        </td >
         <td>{props.task.task_description}</td>
         <td>{props.task.due_date}</td>
         <td>
-            <Link className="btn btn-primary" to={"/edit/"+props.task._id}>Edit</Link>
-            {/* <Link className="btn btn-danger" to={"/edit/"+props.task._id}>Delete</Link> */}
-            <div className="btn btn-danger" onClick={() => 
+        <div className="btn btn-warning" onClick={() => 
                 axios.post('http://localhost:4000/tasks/update/'+ props.task._id, 
                 {
                     task_description: props.task.task_description,
                     due_date: props.task.due_date,
                     task_completed: props.task.task_completed,
                     date_completed: props.task.date_completed,
-                    task_deleted: true
+                    task_deleted: false
                 })
 
             .then(res => console.log(res.data))
-                }>Delete</div>
+                }>Restore</div>
         </td>
     </tr>
 )
 
-export default class PendingList extends Component {
+export default class TrashList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {tasks: []};
+        this.getResults = this.getResults.bind(this);
     }
 
     componentDidMount() {
@@ -64,11 +52,14 @@ export default class PendingList extends Component {
         //         console.log(error);
         //     })
     }
+    getResults(){
+        console.log('lol')
+    }
 
     taskList() {
         return this.state.tasks.map(function(currentTask, i) {
-
-            if ((currentTask.task_completed) && (!currentTask.task_deleted))
+            console.log(currentTask)
+            if (currentTask.task_deleted)
             return <Task task={currentTask} key={i} />;
         });
     }
@@ -76,7 +67,7 @@ export default class PendingList extends Component {
     render() {
         return (
             <div>
-                <h3>Completed Tasks</h3>
+                <h3>Trash</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>

@@ -5,7 +5,6 @@ import axios from 'axios';
 const Task = props => (
     <tr>
         <td>
-            {console.log(props.task)}
             <div className="btn btn-primary" onClick={() => 
                 axios.post('http://localhost:4000/tasks/update/'+ props.task._id, 
                 {
@@ -61,7 +60,7 @@ export default class PendingList extends Component {
     taskList() {
         return this.state.tasks.map(function(currentTask, i) {
             console.log(currentTask)
-            if (!currentTask.task_completed)
+            if ((!currentTask.task_completed) && (!currentTask.task_deleted))
             return <Task task={currentTask} key={i} />;
         });
     }

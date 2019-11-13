@@ -6,6 +6,7 @@ import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import PendingList from "./components/PendingList";
 import CompletedList from "./components/CompletedList";
+import TrashList from "./components/TrashList";
 
 
 class App extends Component {
@@ -29,12 +30,16 @@ class App extends Component {
                 <li className="navbar-item">
                   <Link to="/create" className="nav-link">Create Task</Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/trash" className="nav-link">Trash</Link>
+                </li>
               </ul>
             </div>
           </nav>
 
           <Route path="/" exact component={PendingList} />
           <Route path="/completed" component={CompletedList} />
+          <Route path="/trash" component={TrashList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
         </div>
