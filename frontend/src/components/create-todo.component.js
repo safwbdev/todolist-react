@@ -26,12 +26,6 @@ export default class CreateTodo extends Component {
         });
     }
 
-    // onChangeDueDate(e) {
-    //     this.setState({
-    //         due_date: e.target.value
-    //     });
-    // }
-
     onChangeDueDate = date => {
         this.setState({
             due_date: date
@@ -75,27 +69,6 @@ export default class CreateTodo extends Component {
         return (
             <div style={{marginTop: 20}}>
                 <h3>Create New Task</h3>
-                {/* <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Description: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.task_description}
-                                onChange={this.onChangetaskDescription}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Due Date: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.due_date}
-                                onChange={this.onChangeDueDate}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Create Task" className="btn btn-primary" />
-                    </div>
-                </form> */}
                 <form onSubmit={this.onSubmit}>
                     <div class="input-field col s6">
                         <div>Task Description</div>
@@ -113,7 +86,6 @@ export default class CreateTodo extends Component {
                         <DatePicker
                             selected={this.state.due_date}
                             placeholder="Due Date"
-                            // value={this.state.due_date}
                             onChange={this.onChangeDueDate} />
                     </div>
                     <div class="input-field col s12">

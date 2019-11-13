@@ -13,44 +13,19 @@ class App extends Component {
   render() {
     return (
       <Router>
-          
-          {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="https://codingthesmartway.com">
-            </a>
-            <Link to="/" className="navbar-brand">Todo List App</Link>
-            <div className="collpase nav-collapse">
-            <ul className="navbar-nav mr-auto">
-            <li className="navbar-item">
-            <Link to="/" className="nav-link">Pending</Link>
-            </li>
-            <li className="navbar-item">
-            <Link to="/completed" className="nav-link">Completed</Link>
-            </li>
-            <li className="navbar-item">
-            <Link to="/create" className="nav-link">Create Task</Link>
-            </li>
-            <li className="navbar-item">
-            <Link to="/trash" className="nav-link">Trash</Link>
-            </li>
-            </ul>
+        <nav>
+          <div className="container">
+            <div className="nav-wrapper">
+              <ul id="nav-mobile" className="left hide-on-med-and-down">
+                <li><Link to="/" className="nav-link">Pending</Link></li>
+                  <li><Link to="/completed" className="nav-link">Completed</Link></li>
+                  <li><Link to="/create" className="nav-link">Create Task</Link></li>
+                  <li><Link to="/trash" className="nav-link">Trash</Link></li>
+              </ul>
             </div>
-          </nav> */}
-          <nav>
-          <div className="container">
-    <div class="nav-wrapper">
-      {/* <a href="#" class="brand-logo left">Logo</a> */}
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><Link to="/" className="nav-link">Pending</Link></li>
-          <li><Link to="/completed" className="nav-link">Completed</Link></li>
-          <li><Link to="/create" className="nav-link">Create Task</Link></li>
-          <li><Link to="/trash" className="nav-link">Trash</Link></li>
-      </ul>
-    </div>
-    </div>
-  </nav>
-          <div className="container">
-
-
+          </div>
+        </nav>
+        <div className="container">
           <Route path="/" exact component={PendingList} />
           <Route path="/completed" component={CompletedList} />
           <Route path="/trash" component={TrashList} />

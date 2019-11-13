@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-// import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 
 export default class EditTodo extends Component {
 
@@ -15,7 +14,7 @@ export default class EditTodo extends Component {
 
         this.state = {
             task_description: '',
-            due_date: '',
+            due_date: new Date(),
             task_completed: '',
             date_completed: false,
             task_deleted: false
@@ -27,7 +26,7 @@ export default class EditTodo extends Component {
             .then(response => {
                 this.setState({
                     task_description: response.data.task_description,
-                    due_date: response.data.due_date,
+                    // due_date: response.data.due_date,
                     task_completed: response.data.task_completed,
                     date_completed: response.data.date_completed,
                     task_deleted: response.data.task_deleted
@@ -36,6 +35,8 @@ export default class EditTodo extends Component {
             .catch(function(error) {
                 console.log(error)
             })
+            console.log( this.state.due_date)
+            console.log(new Date())
     }
 
     onChangeTaskDescription(e) {
@@ -44,11 +45,11 @@ export default class EditTodo extends Component {
         });
     }
 
-    onChangeDueDate(e) {
+    onChangeDueDate = date => {
         this.setState({
-            due_date: e.target.value
+            due_date: date
         });
-    }
+    };
 
     onSubmit(e) {
         e.preventDefault();
@@ -71,24 +72,23 @@ export default class EditTodo extends Component {
                 <h3>Update Todo</h3>
                 <form onSubmit={this.onSubmit}>
                      <div class="input-field col s6">
+                        <div>Task Description</div>
                         <input 
                             id="task_desc" 
                             type="text" 
                             class="validate"
-                            placeholder="Task Description"
+                            placeholder="Type in a Task"
                             value={this.state.task_description}
                             onChange={this.onChangeTaskDescription}
-                             />
+                        />
                     </div>
                     <div class="input-field col s6">
-                        <input 
-                            id="task_desc" 
-                            type="text" 
-                            class="validate"
+                        <div>Select a Due Date</div>
+                        <DatePicker
+                            selected={this.state.due_date}
                             placeholder="Due Date"
-                            value={this.state.due_date}
-                            onChange={this.onChangeDueDate}
-                             />
+                            onChange={this.onChangeDueDate} 
+                        />
                     </div>
                     <div class="input-field col s12">
                     <Link to='/' className="btn btn-primary">Go Back</Link>{' '}

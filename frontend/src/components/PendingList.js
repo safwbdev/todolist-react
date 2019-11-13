@@ -54,7 +54,6 @@ export default class PendingList extends Component {
             .catch(function (error) {
                 console.log(error);
             })
-            console.log(new Date())
     }
     componentDidUpdate(){
         // axios.get('http://localhost:4000/tasks/')
@@ -65,9 +64,6 @@ export default class PendingList extends Component {
         //         console.log(error);
         //     })
     }
-
-   
-
     taskList() {
         return this.state.tasks.map(function(currentTask, i) {
             console.log(currentTask)
@@ -80,6 +76,7 @@ export default class PendingList extends Component {
     }
 
     render() {
+        console.log(new Date())
         return (
             <div>
                 <h3>Pending Tasks</h3>
