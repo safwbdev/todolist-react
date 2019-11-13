@@ -66,7 +66,7 @@ export default class CreateTodo extends Component {
         return (
             <div style={{marginTop: 20}}>
                 <h3>Create New Task</h3>
-                <form onSubmit={this.onSubmit}>
+                {/* <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Description: </label>
                         <input  type="text"
@@ -86,6 +86,35 @@ export default class CreateTodo extends Component {
                     <div className="form-group">
                         <input type="submit" value="Create Task" className="btn btn-primary" />
                     </div>
+                </form> */}
+                <form onSubmit={this.onSubmit}>
+                    <div class="input-field col s6">
+                        <input 
+                            id="task_desc" 
+                            type="text" 
+                            class="validate"
+                            placeholder="Task Description"
+                            value={this.state.task_description}
+                            onChange={this.onChangetaskDescription}
+                             />
+                    </div>
+                    <div class="input-field col s6">
+                        <input 
+                            id="task_desc" 
+                            type="text" 
+                            class="validate"
+                            placeholder="Due Date"
+                            value={this.state.due_date}
+                            onChange={this.onChangeDueDate}
+                             />
+                    </div>
+                    <div class="input-field col s12">
+                        {(this.state.task_description ==='') || (this.state.due_date ==='') ? 
+                            (<input type="submit" value="Create Task" className="btn btn-primary"  disabled="disabled"/>) 
+                            :  
+                            (<input type="submit" value="Create Task" className="btn btn-primary" />)}
+                    </div>
+                
                 </form>
             </div>
         )

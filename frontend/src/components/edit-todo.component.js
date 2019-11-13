@@ -48,18 +48,6 @@ export default class EditTodo extends Component {
         });
     }
 
-    // onChangeTodoPriority(e) {
-    //     this.setState({
-    //         todo_priority: e.target.value
-    //     });
-    // }
-
-    // onChangeTodoCompleted(e) {
-    //     this.setState({
-    //         todo_completed: !this.state.todo_completed
-    //     });
-    // }
-
     onSubmit(e) {
         e.preventDefault();
         const obj = {
@@ -80,28 +68,32 @@ export default class EditTodo extends Component {
             <div>
                 <h3>Update Todo</h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Description: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.task_description}
-                                onChange={this.onChangeTaskDescription}
-                                />
+                     <div class="input-field col s6">
+                        <input 
+                            id="task_desc" 
+                            type="text" 
+                            class="validate"
+                            placeholder="Task Description"
+                            value={this.state.task_description}
+                            onChange={this.onChangeTaskDescription}
+                             />
                     </div>
-                    <div className="form-group">
-                        <label>Responsible: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.due_date}
-                                onChange={this.onChangeDueDate}
-                                />
+                    <div class="input-field col s6">
+                        <input 
+                            id="task_desc" 
+                            type="text" 
+                            class="validate"
+                            placeholder="Due Date"
+                            value={this.state.due_date}
+                            onChange={this.onChangeDueDate}
+                             />
                     </div>
-                    <div className="form-group">
-                        <br/>
-                        <div className="form-group">
-                            <Link to='/' className="btn btn-primary">Go Back</Link>
-                            <input type="submit" value="Update Todo" className="btn btn-primary" />
-                        </div>
+                    <div class="input-field col s12">
+                    <Link to='/' className="btn btn-primary">Go Back</Link>{' '}
+                        {(this.state.task_description ==='') || (this.state.due_date ==='') ? 
+                            (<input type="submit" value="Update" className="btn btn-primary"  disabled="disabled"/>) 
+                            :  
+                            (<input type="submit" value="Update" className="btn btn-primary" />)}
                     </div>
                 </form>
             </div>
