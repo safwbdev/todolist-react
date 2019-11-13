@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Moment from 'react-moment';
 
 const Task = props => (
     <tr>
@@ -10,7 +11,7 @@ const Task = props => (
             (<div className="btn green">Unchecked</div>)}
         </td >
         <td>{props.task.task_description}</td>
-        <td>{props.task.due_date}</td>
+        <td><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
         <td className="center">
         <div className="waves-effect waves-light btn amber darken-4" onClick={() => 
                 axios.post('http://localhost:4000/tasks/update/'+ props.task._id, 

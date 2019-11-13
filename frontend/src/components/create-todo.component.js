@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import DatePicker from "react-datepicker";
 
 export default class CreateTodo extends Component {
 
@@ -12,10 +13,10 @@ export default class CreateTodo extends Component {
 
         this.state = {
             task_description: '',
-            due_date: '',
+            due_date: new Date(),
             task_completed: false,
             date_completed: '',
-            task_deleted: false
+            task_deleted: false,
         }
     }
 
@@ -25,11 +26,17 @@ export default class CreateTodo extends Component {
         });
     }
 
-    onChangeDueDate(e) {
+    // onChangeDueDate(e) {
+    //     this.setState({
+    //         due_date: e.target.value
+    //     });
+    // }
+
+    onChangeDueDate = date => {
         this.setState({
-            due_date: e.target.value
+            due_date: date
         });
-    }
+      };
 
 
     onSubmit(e) {
@@ -60,6 +67,8 @@ export default class CreateTodo extends Component {
             date_completed: '',
             task_deleted: false
         })
+
+        this.props.history.push('/');
     }
 
     render() {
@@ -89,24 +98,23 @@ export default class CreateTodo extends Component {
                 </form> */}
                 <form onSubmit={this.onSubmit}>
                     <div class="input-field col s6">
+                        <div>Task Description</div>
                         <input 
                             id="task_desc" 
                             type="text" 
                             class="validate"
-                            placeholder="Task Description"
+                            placeholder="Type in a Task"
                             value={this.state.task_description}
                             onChange={this.onChangetaskDescription}
                              />
                     </div>
                     <div class="input-field col s6">
-                        <input 
-                            id="task_desc" 
-                            type="text" 
-                            class="validate"
+                        <div>Select a Due Date</div>
+                        <DatePicker
+                            selected={this.state.due_date}
                             placeholder="Due Date"
-                            value={this.state.due_date}
-                            onChange={this.onChangeDueDate}
-                             />
+                            // value={this.state.due_date}
+                            onChange={this.onChangeDueDate} />
                     </div>
                     <div class="input-field col s12">
                         {(this.state.task_description ==='') || (this.state.due_date ==='') ? 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Moment from 'react-moment';
 
 const Task = props => (
     <tr>
@@ -19,7 +20,7 @@ const Task = props => (
                 }>Check</div>
         </td >
         <td>{props.task.task_description}</td>
-        <td>{props.task.due_date}</td>
+        <td><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
         <td className="center">
             <Link className="waves-effect waves-light btn blue" to={"/edit/"+props.task._id}>Edit</Link>{' '}
             <div className="waves-effect waves-light btn red darken-3" onClick={() => 
