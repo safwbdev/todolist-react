@@ -66,13 +66,13 @@ export default class PendingList extends Component {
             })
     }
     componentDidUpdate(){
-        // axios.get('http://localhost:4000/tasks/')
-        //     .then(response => {
-        //         this.setState({tasks: response.data});
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     })
+        axios.get('http://localhost:4000/tasks/')
+            .then(response => {
+                this.setState({tasks: response.data});
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     taskList() {
