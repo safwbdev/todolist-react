@@ -23,7 +23,7 @@ const Task = props => (
                 </div>
         </td >
         <td>{props.task.task_description}</td>
-        <td className="small-only"><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
+        <td className="hide-on-small-only"><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
         <td className="center">
             <Link className="waves-effect waves-light btn blue" to={"/edit/"+props.task._id}>
             <span><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span><span className="hide-on-med-and-down">{' '}Edit</span>

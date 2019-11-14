@@ -6,9 +6,10 @@ export default class Navbar extends Component {
     render() {
         return (
           <nav>
-            <div className="nav-wrapper">
+            <div className="nav-wrapper teal">
               <div className="container">
                 <ul id="" className="left">
+                  <li className="brand-logo hide-on-med-and-down">TODO LIST</li>
                   <li>
                     <Link to="/">
                       <span><i className="fa fa-list"></i></span>

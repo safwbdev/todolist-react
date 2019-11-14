@@ -8,6 +8,7 @@ import CompletedList from "./components/pages/CompletedList";
 import CreateTask from "./components/pages/CreateTask";
 import EditTask from "./components/pages/EditTask";
 import TrashList from "./components/pages/TrashList";
+import './App.scss';
 
 
 class App extends Component {
