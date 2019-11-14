@@ -61,7 +61,8 @@ export default class EditTask extends Component {
         axios.post('http://localhost:4000/tasks/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
-        this.props.history.push('/');
+        {this.props.history.push(!this.state.task_completed ? ('/') : ('/completed'))}
+                        
     }
 
     render() {
