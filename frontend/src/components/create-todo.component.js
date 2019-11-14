@@ -68,27 +68,27 @@ export default class CreateTodo extends Component {
     render() {
         return (
             <div style={{marginTop: 20}}>
-                <h3>Create New Task</h3>
+                <h4>Create New Task</h4>
                 <form onSubmit={this.onSubmit}>
-                    <div class="input-field col s6">
+                    <div className="input-field col s6">
                         <div>Task Description</div>
                         <input 
                             id="task_desc" 
                             type="text" 
-                            class="validate"
+                            className="validate"
                             placeholder="Type in a Task"
                             value={this.state.task_description}
                             onChange={this.onChangetaskDescription}
                              />
                     </div>
-                    <div class="input-field col s6">
+                    <div className="input-field col s6">
                         <div>Select a Due Date</div>
                         <DatePicker
                             selected={this.state.due_date}
                             placeholder="Due Date"
                             onChange={this.onChangeDueDate} />
                     </div>
-                    <div class="input-field col s12">
+                    <div className="input-field col s12">
                         {(this.state.task_description ==='') || (this.state.due_date ==='') ? 
                             (<input type="submit" value="Create Task" className="btn btn-primary"  disabled="disabled"/>) 
                             :  

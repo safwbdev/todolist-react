@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Moment from 'react-moment';
 
-// import 'moment-timezone';
-
 const Task = props => (
     <tr>
         <td>
@@ -19,18 +17,20 @@ const Task = props => (
                 })
 
             .then(res => console.log(res.data))
-                }><i class="fa fa-check-square-o" ></i></div>
+                }>
+                    <i className="fa fa-check-square-o" ></i>
+                    </div>
         </td>
         <td>{props.task.task_description}</td>
-        <td>
+        <td className="hide-on-med-and-down">
             <Moment format="DD-MM-YYYY">{props.task.due_date}</Moment>
         </td>
-        <td>
+        <td className="hide-on-med-and-down">
             <Moment format="DD-MM-YYYY">{props.task.date_completed}</Moment>
         </td>
         <td className="center">
             <Link className="waves-effect waves-light btn blue" to={"/edit/"+props.task._id}>
-            <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><span className="hide-on-med-and-down">{' '}Edit</span></Link>{' '}
+            <span><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span><span className="hide-on-med-and-down">{' '}Edit</span></Link>{' '}
             <div className="waves-effect waves-light btn red darken-3" onClick={() => 
                 axios.post('http://localhost:4000/tasks/update/'+ props.task._id, 
                 {
@@ -43,7 +43,7 @@ const Task = props => (
 
             .then(res => console.log(res.data))
                 }>
-                    <span><i class="fa fa-trash"></i></span><span className="hide-on-med-and-down">{' '}Delete</span>
+                    <span><i className="fa fa-trash"></i></span><span className="hide-on-med-and-down">{' '}Delete</span>
                 </div>
         </td>
     </tr>
@@ -81,7 +81,7 @@ export default class PendingList extends Component {
             if ((currentTask.task_completed) && (!currentTask.task_deleted)){
                 return <Task task={currentTask} key={i} />;
             } else {
-                return ''
+                return null;
             }
         });
     }
@@ -89,7 +89,7 @@ export default class PendingList extends Component {
     render() {
         return (
             <div>
-                <h3>Completed Tasks</h3>
+                <h4>Completed Tasks</h4>
                 <table>
                     <thead className="hide-on-med-and-down">
                         <tr>

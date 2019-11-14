@@ -5,17 +5,14 @@ import Moment from 'react-moment';
 const Task = props => (
     <tr>
         <td>
-        <div className="z-depth-0 btn transparent black-text">
-            {props.task.task_completed ? 
-            (<i class="fa fa-check-square-o" ></i>) 
-            :  
-            (<i class="fa fa-square-o" ></i>)}
+            <div className="z-depth-0 btn transparent black-text">
+            {props.task.task_completed ? (<i className="fa fa-check-square-o" ></i>) : (<i className="fa fa-square-o" ></i>)}
             </div>
         </td >
         <td>{props.task.task_description}</td>
-        <td><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
+        <td className="hide-on-med-and-down"><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
         <td className="center">
-        <div className="waves-effect waves-light btn amber darken-4" onClick={() => 
+            <div className="waves-effect waves-light btn amber darken-4" onClick={() => 
                 axios.post('http://localhost:4000/tasks/update/'+ props.task._id, 
                 {
                     task_description: props.task.task_description,
@@ -27,7 +24,7 @@ const Task = props => (
 
             .then(res => console.log(res.data))
                 }>
-                    <span><i class="fa fa-undo"></i></span><span className="hide-on-med-and-down">{' '}Restore</span>
+                    <span><i className="fa fa-undo"></i></span><span className="hide-on-med-and-down">{' '}Restore</span>
                 </div>
         </td>
     </tr>
@@ -38,7 +35,6 @@ export default class TrashList extends Component {
     constructor(props) {
         super(props);
         this.state = {tasks: []};
-        this.getResults = this.getResults.bind(this);
     }
 
     componentDidMount() {
@@ -59,17 +55,13 @@ export default class TrashList extends Component {
         //         console.log(error);
         //     })
     }
-    getResults(){
-        console.log('lol')
-    }
 
     taskList() {
         return this.state.tasks.map(function(currentTask, i) {
-            console.log(currentTask)
             if (currentTask.task_deleted){
                 return <Task task={currentTask} key={i} />;
             } else {
-                return ''
+                return null;
             }
         });
     }
@@ -77,9 +69,9 @@ export default class TrashList extends Component {
     render() {
         return (
             <div>
-                <h3>Trash</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }}>
-                    <thead>
+                <h4>Trash</h4>
+                <table className="table table-striped">
+                    <thead className="hide-on-med-and-down">
                         <tr>
                             <th>Status</th>
                             <th>Description</th>
@@ -87,9 +79,7 @@ export default class TrashList extends Component {
                             <th className="center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        { this.taskList() }
-                    </tbody>
+                    <tbody>{this.taskList()}</tbody>
                 </table>
             </div>
         )

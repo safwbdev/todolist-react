@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import 'font-awesome/css/font-awesome.min.css';
-import CreateTodo from "./components/create-todo.component";
-import EditTodo from "./components/edit-todo.component";
+import CreateTask from "./components/create-todo.component";
+import EditTask from "./components/edit-todo.component";
 import PendingList from "./components/PendingList";
 import CompletedList from "./components/CompletedList";
 import TrashList from "./components/TrashList";
@@ -15,25 +14,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {/* <nav>
-          <div className="container">
-            <div className="nav-wrapper">
-              <ul id="nav-mobile" className="left hide-on-med-and-down">
-                <li><Link to="/" className="nav-link">Pending</Link></li>
-                  <li><Link to="/completed" className="nav-link">Completed</Link></li>
-                  <li><Link to="/create" className="nav-link">Create Task</Link></li>
-                  <li><Link to="/trash" className="nav-link">Trash</Link></li>
-              </ul>
-            </div>
-          </div>
-        </nav> */}
         <Navbar />
         <div className="container">
           <Route path="/" exact component={PendingList} />
           <Route path="/completed" component={CompletedList} />
           <Route path="/trash" component={TrashList} />
-          <Route path="/edit/:id" component={EditTodo} />
-          <Route path="/create" component={CreateTodo} />
+          <Route path="/edit/:id" component={EditTask} />
+          <Route path="/create" component={CreateTask} />
         </div>
       </Router>
     );

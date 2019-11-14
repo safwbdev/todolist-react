@@ -11,26 +11,26 @@ export default class Navbar extends Component {
               <ul id="nav-mobile" className="left">
                 <li>
                   <Link to="/" className="nav-link">
-                    <span className="hide-on-med-and-down">Pending</span>
-                    <span className="hide-on-large-only"><i class="fa fa-list"></i></span>
+                    <span><i className="fa fa-list"></i></span>
+                    <span className="hide-on-med-and-down">{' '}Pending</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/completed" className="nav-link">
-                      <span className="hide-on-med-and-down">Completed</span>
-                      <span className="hide-on-large-only"><i class="fa fa-check-square-o" ></i></span>
+                      <span><i className="fa fa-check-square-o" ></i></span>
+                      <span className="hide-on-med-and-down">{' '}Completed</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/create" className="nav-link"> 
-                      <span className="hide-on-med-and-down">New Task</span>
-                      <span className="hide-on-large-only"><i class="fa fa-plus-circle"></i></span>
+                      <span><i className="fa fa-plus-circle"></i></span>
+                      <span className="hide-on-med-and-down">{' '}New Task</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/trash" className="nav-link">
-                      <span className="hide-on-med-and-down">Trash</span>
-                      <span className="hide-on-large-only"><i class="fa fa-trash"></i></span>
+                      <span><i className="fa fa-trash"></i></span>
+                      <span className="hide-on-med-and-down">{' '}Trash</span>
                     </Link>
                   </li>
               </ul>

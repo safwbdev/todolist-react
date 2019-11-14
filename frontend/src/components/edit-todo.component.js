@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from "react-datepicker";
 
-export default class EditTodo extends Component {
+export default class EditTask extends Component {
 
     constructor(props) {
         super(props);
@@ -35,8 +35,6 @@ export default class EditTodo extends Component {
             .catch(function(error) {
                 console.log(error)
             })
-            console.log( this.state.due_date)
-            console.log(new Date())
     }
 
     onChangeTaskDescription(e) {
@@ -69,20 +67,20 @@ export default class EditTodo extends Component {
     render() {
         return (
             <div>
-                <h3>Update Todo</h3>
+                <h4>Update Todo</h4>
                 <form onSubmit={this.onSubmit}>
-                     <div class="input-field col s6">
+                     <div className="input-field col s6">
                         <div>Task Description</div>
                         <input 
                             id="task_desc" 
                             type="text" 
-                            class="validate"
+                            className="validate"
                             placeholder="Type in a Task"
                             value={this.state.task_description}
                             onChange={this.onChangeTaskDescription}
                         />
                     </div>
-                    <div class="input-field col s6">
+                    <div className="input-field col s6">
                         <div>Select a Due Date</div>
                         <DatePicker
                             selected={this.state.due_date}
@@ -90,12 +88,14 @@ export default class EditTodo extends Component {
                             onChange={this.onChangeDueDate} 
                         />
                     </div>
-                    <div class="input-field col s12">
-                    <Link to='/' className="btn btn-primary">Go Back</Link>{' '}
-                        {(this.state.task_description ==='') || (this.state.due_date ==='') ? 
-                            (<input type="submit" value="Update" className="btn btn-primary"  disabled="disabled"/>) 
-                            :  
-                            (<input type="submit" value="Update" className="btn btn-primary" />)}
+                    <div className="input-field col s12">
+                    {console.log(this.state.task_completed)}
+                    {!this.state.task_completed ? (<Link to='/' className="btn btn-primary">Go Back</Link>) : (<Link to='/completed' className="btn btn-primary">Go Back</Link>)}
+                    {' '}
+                    {(this.state.task_description ==='') || (this.state.due_date ==='') ? 
+                        (<input type="submit" value="Update" className="btn btn-primary"  disabled="disabled"/>) 
+                        :  
+                        (<input type="submit" value="Update" className="btn btn-primary" />)}
                     </div>
                 </form>
             </div>

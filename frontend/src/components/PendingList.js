@@ -19,14 +19,14 @@ const Task = props => (
 
             .then(res => console.log(res.data))
                 }>
-                    <i class="fa fa-square-o" ></i>
+                    <i className="fa fa-square-o" ></i>
                 </div>
         </td >
         <td>{props.task.task_description}</td>
         <td className="hide-on-med-and-down"><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
         <td className="center">
             <Link className="waves-effect waves-light btn blue" to={"/edit/"+props.task._id}>
-                <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><span className="hide-on-med-and-down">{' '}Edit</span>
+            <span><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span><span className="hide-on-med-and-down">{' '}Edit</span>
             </Link>{' '}
             <div className="waves-effect waves-light btn red darken-3" onClick={() => 
                 axios.post('http://localhost:4000/tasks/update/'+ props.task._id, 
@@ -40,7 +40,7 @@ const Task = props => (
 
             .then(res => console.log(res.data))
                 }>
-                    <span><i class="fa fa-trash"></i></span><span className="hide-on-med-and-down">{' '}Delete</span>
+                    <span><i className="fa fa-trash"></i></span><span className="hide-on-med-and-down">{' '}Delete</span>
                 </div>
         </td>
     </tr>
@@ -73,20 +73,18 @@ export default class PendingList extends Component {
     }
     taskList() {
         return this.state.tasks.map(function(currentTask, i) {
-            console.log(currentTask)
             if ((!currentTask.task_completed) && (!currentTask.task_deleted)){
                 return <Task task={currentTask} key={i} />;
             } else {
-                return ''
+                return null
             }
         });
     }
 
     render() {
-        console.log(new Date())
         return (
             <div>
-                <h3>Pending Tasks</h3>
+                <h4>Pending Tasks</h4>
                 <table>
                     <thead className="hide-on-med-and-down">
                         <tr>
