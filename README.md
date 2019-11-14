@@ -18,6 +18,6 @@ Before running this project you must first go into the backend directory on your
 
 ## FRONTEND
 
-Go into the froontend directory on your terminal, and run the following command:
+Go into the frontend directory on your terminal, and run the following command:
 
 ### `npm start`
