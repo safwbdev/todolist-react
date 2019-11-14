@@ -5,6 +5,9 @@ Before you run any of the applications, run the following the following command 
 
 ### `npm install`
 
+## MongoDB
+
+Local MongoDB Database is 'tasks'
 
 ## BACKEND
 
