@@ -22,10 +22,10 @@ const Task = props => (
                     </div>
         </td>
         <td>{props.task.task_description}</td>
-        <td className="hide-on-med-and-down">
+        <td className="hide-on-small-only">
             <Moment format="DD-MM-YYYY">{props.task.due_date}</Moment>
         </td>
-        <td className="hide-on-med-and-down">
+        <td className="hide-on-small-only">
             <Moment format="DD-MM-YYYY">{props.task.date_completed}</Moment>
         </td>
         <td className="center">
@@ -91,7 +91,7 @@ export default class PendingList extends Component {
             <div>
                 <h4>Completed Tasks</h4>
                 <table>
-                    <thead className="hide-on-med-and-down">
+                    <thead className="hide-on-small-only">
                         <tr>
                             <th>Status</th>
                             <th>Description</th>

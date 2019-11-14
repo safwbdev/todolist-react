@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import 'font-awesome/css/font-awesome.min.css';
-import CreateTask from "./components/create-todo.component";
-import EditTask from "./components/edit-todo.component";
-import PendingList from "./components/PendingList";
-import CompletedList from "./components/CompletedList";
-import TrashList from "./components/TrashList";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
+import PendingList from "./components/pages/PendingList";
+import CompletedList from "./components/pages/CompletedList";
+import CreateTask from "./components/pages/CreateTask";
+import EditTask from "./components/pages/EditTask";
+import TrashList from "./components/pages/TrashList";
 
 
 class App extends Component {

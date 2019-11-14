@@ -89,13 +89,12 @@ export default class EditTask extends Component {
                         />
                     </div>
                     <div className="input-field col s12">
-                    {console.log(this.state.task_completed)}
-                    {!this.state.task_completed ? (<Link to='/' className="btn btn-primary">Go Back</Link>) : (<Link to='/completed' className="btn btn-primary">Go Back</Link>)}
-                    {' '}
-                    {(this.state.task_description ==='') || (this.state.due_date ==='') ? 
-                        (<input type="submit" value="Update" className="btn btn-primary"  disabled="disabled"/>) 
-                        :  
-                        (<input type="submit" value="Update" className="btn btn-primary" />)}
+                        {!this.state.task_completed ? (<Link to='/' className="btn btn-primary">Go Back</Link>) : (<Link to='/completed' className="btn btn-primary">Go Back</Link>)}
+                        {' '}
+                        {(this.state.task_description ==='') || (this.state.due_date ==='') ? 
+                            (<input type="submit" value="Update" className="btn btn-primary"  disabled="disabled"/>) 
+                            :  
+                            (<input type="submit" value="Update" className="btn btn-primary" />)}
                     </div>
                 </form>
             </div>
