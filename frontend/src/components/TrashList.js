@@ -5,10 +5,12 @@ import Moment from 'react-moment';
 const Task = props => (
     <tr>
         <td>
+        <div className="z-depth-0 btn transparent black-text">
             {props.task.task_completed ? 
-            (<div className="btn green">Checked</div>) 
+            (<i class="fa fa-check-square-o" ></i>) 
             :  
-            (<div className="btn green">Unchecked</div>)}
+            (<i class="fa fa-square-o" ></i>)}
+            </div>
         </td >
         <td>{props.task.task_description}</td>
         <td><Moment format="DD-MM-YYYY">{props.task.due_date}</Moment></td>
@@ -24,7 +26,9 @@ const Task = props => (
                 })
 
             .then(res => console.log(res.data))
-                }>Restore</div>
+                }>
+                    <span><i class="fa fa-undo"></i></span><span className="hide-on-med-and-down">{' '}Restore</span>
+                </div>
         </td>
     </tr>
 )
@@ -77,7 +81,7 @@ export default class TrashList extends Component {
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
-                            <th>Check/Uncheck</th>
+                            <th>Status</th>
                             <th>Description</th>
                             <th>Due Date</th>
                             <th className="center">Actions</th>
